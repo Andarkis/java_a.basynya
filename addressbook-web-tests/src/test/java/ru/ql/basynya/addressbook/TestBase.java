@@ -114,4 +114,14 @@ public class TestBase {
   protected void initContactCreation() {
     wd.findElement(By.linkText("add new")).click();
   }
+
+  protected void deleteSelectedGroups() {
+    wd.findElement(By.name("delete")).click();
+  }
+
+  protected void selectGroup() {
+    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+      wd.findElement(By.name("selected[]")).click();
+    }
+  }
 }
