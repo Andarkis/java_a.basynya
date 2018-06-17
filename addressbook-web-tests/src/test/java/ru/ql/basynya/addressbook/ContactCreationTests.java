@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class СontactCreationTests {
+public class ContactCreationTests {
   FirefoxDriver wd;
 
   @BeforeMethod
@@ -21,9 +21,9 @@ public class СontactCreationTests {
   }
 
   @Test
-  public void СontactCreationTests() {
+  public void ContactCreationTests() {
     initContactCreation();
-    fillContactForm(new ContactData("Jhon", "Doe", "test1", "55555", "88005553535", "88000000000", "test1@example.com", "test2@example.com", "test3@ecample.com"));
+    fillContactForm(new ContactData("John", "Doe", "test1", "55555", "88005553535", "88000000000", "test1@example.com", "test2@example.com", "test3@ecample.com"));
     submitContactCreation();
     returnToHomePage();
   }
