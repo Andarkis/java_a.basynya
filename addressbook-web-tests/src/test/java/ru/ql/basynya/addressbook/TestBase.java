@@ -3,16 +3,21 @@ package ru.ql.basynya.addressbook;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class TestBase extends ApplicationManager {
+public class TestBase {
+
+  protected final ApplicationManager app = new ApplicationManager();
 
   @BeforeMethod
   public void setUp() throws Exception {
-    init();
-  }
+    app.init();
+  } 
 
   @AfterMethod
   public void tearDown() {
-    stop();
+    app.stop();
   }
 
+  public ApplicationManager getApp() {
+    return app;
+  }
 }
