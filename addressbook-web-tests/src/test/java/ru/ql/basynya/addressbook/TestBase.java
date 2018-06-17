@@ -124,4 +124,20 @@ public class TestBase {
       wd.findElement(By.name("selected[]")).click();
     }
   }
+
+  protected void acceptAlert() {
+    wd.switchTo().alert().accept();
+  }
+
+  protected void deleteSelectedContacts() {
+    wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+  }
+
+  protected void selectContact() {
+    wd.findElement(By.name("selected[]")).click();
+  }
+
+  protected void gotoHomePage() {
+    wd.findElement(By.linkText("home")).click();
+  }
 }
