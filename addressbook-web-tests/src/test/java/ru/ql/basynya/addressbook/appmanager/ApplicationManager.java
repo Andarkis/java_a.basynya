@@ -1,9 +1,11 @@
-package ru.ql.basynya.addressbook;
+package ru.ql.basynya.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import ru.ql.basynya.addressbook.model.ContactData;
+import ru.ql.basynya.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 

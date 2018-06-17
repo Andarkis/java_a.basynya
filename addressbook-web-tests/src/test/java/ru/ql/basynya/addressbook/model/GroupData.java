@@ -1,4 +1,4 @@
-package ru.ql.basynya.addressbook;
+package ru.ql.basynya.addressbook.model;
 
 public class GroupData {
   private final String name;

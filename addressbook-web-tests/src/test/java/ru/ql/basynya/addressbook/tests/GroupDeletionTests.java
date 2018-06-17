@@ -1,4 +1,4 @@
-package ru.ql.basynya.addressbook;
+package ru.ql.basynya.addressbook.tests;
 
 import org.testng.annotations.Test;
 

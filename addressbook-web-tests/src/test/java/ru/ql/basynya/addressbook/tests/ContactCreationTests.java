@@ -1,6 +1,7 @@
-package ru.ql.basynya.addressbook;
+package ru.ql.basynya.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.ql.basynya.addressbook.model.ContactData;
 
 public class ContactCreationTests extends TestBase{
 
