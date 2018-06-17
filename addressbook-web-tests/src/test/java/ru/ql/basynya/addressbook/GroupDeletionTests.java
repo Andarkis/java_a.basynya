@@ -7,12 +7,20 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   public void testGroupDeletion() {
-    wd.findElement(By.linkText("groups")).click();
+    gotoGroupPage();
+    selectGroup();
+    deleteSelectedGroups();
+    returnToGroupPage();
+  }
+
+  private void deleteSelectedGroups() {
+    wd.findElement(By.name("delete")).click();
+  }
+
+  private void selectGroup() {
     if (!wd.findElement(By.name("selected[]")).isSelected()) {
       wd.findElement(By.name("selected[]")).click();
     }
-    wd.findElement(By.name("delete")).click();
-    wd.findElement(By.linkText("group page")).click();
   }
 
 }
