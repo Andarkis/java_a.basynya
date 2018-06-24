@@ -17,13 +17,9 @@ public class ContactCreationTests extends TestBase {
             "email1@example.com",
             "emai2@example.com",
             "email3@ecample.com",
-            "test1"
+            "[none]"
     );
-
-    app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillContactForm(contactData,true);
-    app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToHomePage();
+    app.getContactHelper().createContact(contactData);
   }
 
 }

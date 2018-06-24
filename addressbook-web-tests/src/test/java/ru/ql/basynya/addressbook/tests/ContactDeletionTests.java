@@ -19,7 +19,7 @@ public class ContactDeletionTests extends TestBase {
               "email1@example.com",
               "emai2@example.com",
               "email3@ecample.com",
-              "test1"));
+              "[none]"));
     }
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContacts();

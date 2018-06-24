@@ -7,7 +7,7 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-    ContactData contactData = new ContactData(
+    ContactData contactModificationData = new ContactData(
             null,
             null,
             null,
@@ -21,8 +21,21 @@ public class ContactModificationTests extends TestBase {
     );
 
     app.getNavigationHelper().gotoHomePage();
+    if (! app.getContactHelper().isThereAContact()) {
+      app.getContactHelper().createContact(new ContactData(
+              "Jhon",
+              "Doe",
+              "test1",
+              "55555",
+              "88005553535",
+              "88000000000",
+              "email1@example.com",
+              "emai2@example.com",
+              "email3@ecample.com",
+              "[none]"));
+    }
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillContactForm(contactData, false);
+    app.getContactHelper().fillContactForm(contactModificationData, false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
   }
