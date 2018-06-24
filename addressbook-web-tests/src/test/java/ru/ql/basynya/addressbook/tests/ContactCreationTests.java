@@ -3,12 +3,25 @@ package ru.ql.basynya.addressbook.tests;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.ContactData;
 
-public class ContactCreationTests extends TestBase{
+public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() {
+    ContactData contactData = new ContactData(
+            "Jhon",
+            "Doe",
+            "test1",
+            "55555",
+            "88005553535",
+            "88000000000",
+            "email1@example.com",
+            "emai2@example.com",
+            "email3@ecample.com",
+            "test1"
+    );
+
     app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillContactForm(new ContactData("John", null, "test1", "55555", "88005553535", "88000000000", "test1@example.com", "test2@example.com", "test3@ecample.com"));
+    app.getContactHelper().fillContactForm(contactData,true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
   }
