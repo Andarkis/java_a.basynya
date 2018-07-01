@@ -58,8 +58,9 @@ public class ContactHelper extends BaseHelper{
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void initContactModification(int index) {
+    //Так как в таблице первая строка имеет индекс tr[2], а не tr[0], то добавляем + 2
+    click(By.xpath("//table[@id='maintable']/tbody/tr["+ (index + 2) +"]/td[8]/a/img"));
   }
 
   public void submitContactModification() {
