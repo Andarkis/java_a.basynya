@@ -10,7 +10,7 @@ import ru.ql.basynya.addressbook.model.ContactData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactHelper extends BaseHelper{
+public class ContactHelper extends BaseHelper {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
@@ -60,7 +60,7 @@ public class ContactHelper extends BaseHelper{
 
   public void initContactModification(int index) {
     //Так как в таблице первая строка имеет индекс tr[2], а не tr[0], то добавляем + 2
-    click(By.xpath("//table[@id='maintable']/tbody/tr["+ (index + 2) +"]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + (index + 2) + "]/td[8]/a/img"));
   }
 
   public void submitContactModification() {
@@ -69,7 +69,7 @@ public class ContactHelper extends BaseHelper{
 
   public void createContact(ContactData contact) {
     initContactCreation();
-    fillContactForm(contact,true);
+    fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
   }
