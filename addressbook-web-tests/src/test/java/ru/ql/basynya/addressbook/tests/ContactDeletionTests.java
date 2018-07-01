@@ -1,7 +1,10 @@
 package ru.ql.basynya.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.ContactData;
+
+import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
@@ -10,7 +13,7 @@ public class ContactDeletionTests extends TestBase {
     app.getNavigationHelper().gotoHomePage();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData(
-              "Jhon",
+              "John",
               "Doe",
               "test1",
               "55555",
@@ -21,9 +24,13 @@ public class ContactDeletionTests extends TestBase {
               "email3@ecample.com",
               "[none]"));
     }
+    List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContacts();
     app.getContactHelper().acceptContactDeletionAlert();
+    app.getNavigationHelper().gotoHomePage();
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(before.size() - 1, after.size());
   }
 
 }
