@@ -1,5 +1,6 @@
 package ru.ql.basynya.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.GroupData;
@@ -11,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 
 public class GroupModificationTests extends TestBase {
 
-  @BeforeTest
+  @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().groupPage();
     if (app.group().all().size() == 0) {

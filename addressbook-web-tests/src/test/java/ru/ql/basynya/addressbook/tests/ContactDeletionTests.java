@@ -1,43 +1,40 @@
 package ru.ql.basynya.addressbook.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.ContactData;
 
-import java.util.List;
+import java.util.Set;
 
 public class ContactDeletionTests extends TestBase {
 
-  @BeforeTest
+  @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().gotoHomePage();
-    if (!app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData(
-              "John",
-              "Doe",
-              "test1",
-              "55555",
-              "88005553535",
-              "88000000000",
-              "email1@example.com",
-              "emai2@example.com",
-              "email3@ecample.com",
-              "[none]"));
+    app.goTo().homePage();
+    if (app.contact().all().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstname("John")
+              .withLastname("Doe")
+              .withAddress("test1")
+              .withMobile("88005553535")
+              .withEmail("email1@example.com")
+              .withGroup("[none]"));
     }
   }
 
   @Test
   public void testContactDeletion() {
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size() - 1);
-    app.getContactHelper().deleteSelectedContacts();
-    app.getContactHelper().acceptContactDeletionAlert();
-    app.goTo().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    Set<ContactData> before = app.contact().all();
+    ContactData deletedContact = before.iterator().next();
+    int index = before.size() - 1;
+    app.contact().delete(deletedContact);
+    app.goTo().homePage();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(before.size() - 1, after.size());
 
-    before.remove(before.size() - 1);
+    before.remove(deletedContact);
     Assert.assertEquals(before, after);
   }
+
 }

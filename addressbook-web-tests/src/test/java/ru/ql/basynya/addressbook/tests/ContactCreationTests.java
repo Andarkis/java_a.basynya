@@ -4,36 +4,29 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.ContactData;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() {
-    app.goTo().gotoHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact = new ContactData(
-            "WJohn",
-            "WDoe",
-            "test1",
-            "55555",
-            "88005553535",
-            "88000000000",
-            "email1@example.com",
-            "emai2@example.com",
-            "email3@ecample.com",
-            "[none]"
-    );
-    app.getContactHelper().createContact(contact);
-    app.goTo().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.goTo().homePage();
+    Set<ContactData> before = app.contact().all();
+    ContactData contact = new ContactData()
+            .withFirstname("John")
+            .withLastname("Doe")
+            .withAddress("test1")
+            .withMobile("88005553535")
+            .withEmail("email1@example.com")
+            .withGroup("[none]");
+
+    app.contact().create(contact);
+    app.goTo().homePage();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(before.size() + 1, after.size());
 
+    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before, after);
   }
 }
