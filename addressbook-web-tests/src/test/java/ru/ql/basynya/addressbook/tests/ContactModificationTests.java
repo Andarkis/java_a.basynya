@@ -1,6 +1,7 @@
 package ru.ql.basynya.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.ContactData;
 
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-  @Test (enabled = false)
-  public void testContactModification() {
+  @BeforeTest
+  public void ensurePreconditions() {
     app.goTo().gotoHomePage();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData(
@@ -25,10 +26,14 @@ public class ContactModificationTests extends TestBase {
               "email3@ecample.com",
               "[none]"));
     }
+  }
+
+  @Test
+  public void testContactModification() {
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().initContactModification(before.size() - 1);
+    int index = before.size() - 1;
     ContactData contact = new ContactData(
-            before.get(before.size() - 1).getId(),
+            before.get(index).getId(),
             "Modify John",
             "Modify Doe",
             "Modify Address",
@@ -40,9 +45,7 @@ public class ContactModificationTests extends TestBase {
             "Modify t3@ecample.com",
             null
     );
-    app.getContactHelper().fillContactForm(contact, false);
-    app.getContactHelper().submitContactModification();
-    app.getContactHelper().returnToHomePage();
+    app.getContactHelper().modifyContact(index, contact);
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(before.size(), after.size());
 
@@ -53,4 +56,5 @@ public class ContactModificationTests extends TestBase {
     after.sort(byId);
     Assert.assertEquals(before, after);
   }
+
 }

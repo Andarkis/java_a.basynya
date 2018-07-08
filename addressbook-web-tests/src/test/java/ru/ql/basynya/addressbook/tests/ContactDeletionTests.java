@@ -1,6 +1,7 @@
 package ru.ql.basynya.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import ru.ql.basynya.addressbook.model.ContactData;
 
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
-  @Test (enabled = false)
-  public void testContactDeletion() {
+  @BeforeTest
+  public void ensurePreconditions() {
     app.goTo().gotoHomePage();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData(
@@ -24,6 +25,10 @@ public class ContactDeletionTests extends TestBase {
               "email3@ecample.com",
               "[none]"));
     }
+  }
+
+  @Test
+  public void testContactDeletion() {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContacts();

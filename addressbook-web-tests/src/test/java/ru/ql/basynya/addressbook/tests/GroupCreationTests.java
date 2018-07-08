@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.group().all();
