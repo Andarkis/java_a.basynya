@@ -7,7 +7,6 @@ import ru.ql.basynya.addressbook.model.Groups;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -19,13 +18,13 @@ public class GroupDeletionTests extends TestBase {
     }
   }
 
-  @Test (enabled = false)
+  @Test
   public void testGroupDeletion() {
     Groups before = app.group().all();
     GroupData deletedGroup = before.iterator().next();
     app.group().delete(deletedGroup);
     Groups after = app.group().all();
-    assertEquals(after.size(), before.size() - 1);
+    assertThat(after.size(), equalTo(before.size() - 1));
     assertThat(after, equalTo(before.without(deletedGroup)));
   }
 }
