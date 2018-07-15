@@ -18,7 +18,9 @@ public class ContactDeletionTests extends TestBase {
               .withFirstname("John")
               .withLastname("Doe")
               .withAddress("test1")
+              .withHome("55425")
               .withMobile("88005553535")
+              .withWork("+7(918)123-54-21")
               .withEmail("email1@example.com")
               .withGroup("[none]"));
     }
@@ -30,8 +32,8 @@ public class ContactDeletionTests extends TestBase {
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     app.goTo().homePage();
+    assertThat(app.contact().count(), equalTo(before.size() - 1));
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size() - 1));
     assertThat(after, equalTo(before.without(deletedContact)));
   }
 

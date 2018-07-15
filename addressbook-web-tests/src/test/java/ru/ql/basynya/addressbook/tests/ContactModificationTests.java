@@ -18,7 +18,9 @@ public class ContactModificationTests extends TestBase {
               .withFirstname("John")
               .withLastname("Doe")
               .withAddress("test1")
+              .withHome("55425")
               .withMobile("88005553535")
+              .withWork("+7(918)123-54-21")
               .withEmail("email1@example.com")
               .withGroup("[none]"));
     }
@@ -33,11 +35,13 @@ public class ContactModificationTests extends TestBase {
             .withFirstname("ModJohn")
             .withLastname("ModDoe")
             .withAddress("Modtest1")
-            .withMobile("Mod88005553535")
+            .withHome("05425")
+            .withMobile("08005553535")
+            .withWork("+0(918)123-54-21")
             .withEmail("Modemail1@example.com");
     app.contact().modify(contact);
+    assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size()));
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
 
