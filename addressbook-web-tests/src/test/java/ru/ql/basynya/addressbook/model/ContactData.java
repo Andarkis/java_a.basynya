@@ -14,9 +14,15 @@ public class ContactData {
   private String email2;
   private String email3;
   private String group;
+  private String allPhones;
+  private String allEmails;
 
   public String getAllPhones() {
     return allPhones;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   public ContactData withAllPhones(String allPhones) {
@@ -24,7 +30,11 @@ public class ContactData {
     return this;
   }
 
-  private String allPhones;
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
 
   public String getFirstname() {
     return firstname;

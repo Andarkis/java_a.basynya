@@ -65,6 +65,13 @@ public class GroupHelper extends BaseHelper {
     returnToGroupPage();
   }
 
+  public void delete(GroupData group) {
+    selectGroupById(group.getId());
+    deleteSelectedGroups();
+    groupCache = null;
+    returnToGroupPage();
+  }
+
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -87,12 +94,5 @@ public class GroupHelper extends BaseHelper {
       groupCache.add(new GroupData().withId(id).withName(name));
     }
     return new Groups(groupCache);
-  }
-
-  public void delete(GroupData group) {
-    selectGroupById(group.getId());
-    deleteSelectedGroups();
-    groupCache = null;
-    returnToGroupPage();
   }
 }
