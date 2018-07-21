@@ -29,9 +29,9 @@ public class BaseHelper {
     }
   }
 
-  protected void attach(By locator, File file) {
-    if (file != null) {
-        wd.findElement(locator).sendKeys(file.getAbsolutePath());
+  protected void attach(By locator, File photo) {
+    if (photo != null) {
+        wd.findElement(locator).sendKeys(photo.getAbsolutePath());
     }
   }
 

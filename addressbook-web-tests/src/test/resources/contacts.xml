@@ -1,0 +1,38 @@
+<list>
+  <contact>
+    <firstname>firstname 0</firstname>
+    <lastname>lastname 0</lastname>
+    <address>address 0</address>
+    <home>home 0</home>
+    <mobile>mobile 0</mobile>
+    <work>work 0</work>
+    <email>0email@gmail.com</email>
+    <email2>0email2@gmail.com</email2>
+    <email3>0email3@gmail.com</email3>
+    <group>[none]</group>
+  </contact>
+  <contact>
+    <firstname>firstname 1</firstname>
+    <lastname>lastname 1</lastname>
+    <address>address 1</address>
+    <home>home 1</home>
+    <mobile>mobile 1</mobile>
+    <work>work 1</work>
+    <email>1email@gmail.com</email>
+    <email2>1email2@gmail.com</email2>
+    <email3>1email3@gmail.com</email3>
+    <group>[none]</group>
+  </contact>
+  <contact>
+    <firstname>firstname 2</firstname>
+    <lastname>lastname 2</lastname>
+    <address>address 2</address>
+    <home>home 2</home>
+    <mobile>mobile 2</mobile>
+    <work>work 2</work>
+    <email>2email@gmail.com</email>
+    <email2>2email2@gmail.com</email2>
+    <email3>2email3@gmail.com</email3>
+    <group>[none]</group>
+  </contact>
+</list>
