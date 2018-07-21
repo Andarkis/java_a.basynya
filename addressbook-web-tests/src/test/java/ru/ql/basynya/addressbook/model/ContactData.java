@@ -1,5 +1,6 @@
 package ru.ql.basynya.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -16,6 +17,7 @@ public class ContactData {
   private String group;
   private String allPhones;
   private String allEmails;
+  private File photo;
 
   public String getAllPhones() {
     return allPhones;
@@ -35,6 +37,9 @@ public class ContactData {
     return this;
   }
 
+  public File getPhoto() {
+    return photo;
+  }
 
   public String getFirstname() {
     return firstname;
@@ -78,6 +83,11 @@ public class ContactData {
 
   public int getId() {
     return id;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
   }
 
   public ContactData withId(int id) {
