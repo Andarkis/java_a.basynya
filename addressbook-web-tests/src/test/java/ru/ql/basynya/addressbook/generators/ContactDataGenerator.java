@@ -65,9 +65,9 @@ public class ContactDataGenerator {
     XStream xStream = new XStream();
     xStream.processAnnotations(ContactData.class);
     String xml = xStream.toXML(contacts);
-    try (Writer writer = new FileWriter(file);) {
-      writer.write(xml);
-    }
+    Writer writer = new FileWriter(file);
+    writer.write(xml);
+    writer.close();
   }
 
   private List<ContactData> generateContacts(int count) {
@@ -83,7 +83,8 @@ public class ContactDataGenerator {
               .withEmail(String.format("%semail@gmail.com",i))
               .withEmail2(String.format("%semail2@gmail.com",i))
               .withEmail3(String.format("%semail3@gmail.com",i))
-              .withGroup("[none]"));
+              .withGroup("[none]")
+              .withPhoto(new File(String.format("src/test/resources/img%s.jpg",i % 3))));
     }
     return contacts;
   }
