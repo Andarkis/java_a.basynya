@@ -25,8 +25,7 @@ public class ContactInfoTests extends TestBase {
               .withWork("+7(918)123-54-21")
               .withEmail("email1@example.com")
               .withEmail2("   email2@example.com")
-              .withEmail3("email3@example.com")
-              .withGroup("[none]"));
+              .withEmail3("email3@example.com"));
       app.goTo().homePage();
     }
   }

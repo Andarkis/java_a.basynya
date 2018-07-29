@@ -51,12 +51,11 @@ public class ContactData {
   @Column(name = "email3")
   @Type(type = "text")
   private String email3;
-  @Expose
+  @XStreamOmitField
   @Transient
   private String group;
   @Expose
-  @Column(name = "photo")
-  @Type(type = "text")
+  @Transient
   private String photo;
   @XStreamOmitField
   @Transient
@@ -83,7 +82,7 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return new File(photo);
+    return (photo != null) ? new File(photo) : null;
   }
 
   public String getFirstname() {
@@ -196,6 +195,13 @@ public class ContactData {
             "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", home='" + home + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
             '}';
   }
 
@@ -206,12 +212,18 @@ public class ContactData {
     ContactData that = (ContactData) o;
     return id == that.id &&
             Objects.equals(firstname, that.firstname) &&
-            Objects.equals(lastname, that.lastname);
+            Objects.equals(lastname, that.lastname) &&
+            Objects.equals(address, that.address) &&
+            Objects.equals(home, that.home) &&
+            Objects.equals(mobile, that.mobile) &&
+            Objects.equals(work, that.work) &&
+            Objects.equals(email, that.email) &&
+            Objects.equals(email2, that.email2) &&
+            Objects.equals(email3, that.email3);
   }
 
   @Override
   public int hashCode() {
-
-    return Objects.hash(id, firstname, lastname);
+    return Objects.hash(id, firstname, lastname, address, home, mobile, work, email, email2, email3);
   }
 }

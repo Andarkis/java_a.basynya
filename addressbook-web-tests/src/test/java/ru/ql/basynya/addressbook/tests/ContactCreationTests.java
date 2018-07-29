@@ -23,18 +23,10 @@ public class ContactCreationTests extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validContactsFromXml() throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))){
-      String xml = "";
-      String line = reader.readLine();
-      while (line != null) {
-        xml += line;
-        line = reader.readLine();
-      }
       XStream xStream = new XStream();
       xStream.processAnnotations(ContactData.class);
-      List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
+      List<ContactData> contacts = (List<ContactData>) xStream.fromXML(new File("src/test/resources/contacts.xml"));
       return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-    }
   }
 
   @DataProvider
@@ -56,11 +48,12 @@ public class ContactCreationTests extends TestBase {
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     app.contact().create(contact);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
+    System.out.println(after.toString());
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
