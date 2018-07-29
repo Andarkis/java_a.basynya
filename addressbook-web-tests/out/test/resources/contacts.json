@@ -9,6 +9,7 @@
     "email": "0email@gmail.com",
     "email2": "0email2@gmail.com",
     "email3": "0email3@gmail.com",
+    "company": "company 0",
     "photo": "src\\test\\resources\\img0.jpg"
   },
   {
@@ -21,6 +22,7 @@
     "email": "1email@gmail.com",
     "email2": "1email2@gmail.com",
     "email3": "1email3@gmail.com",
+    "company": "company 1",
     "photo": "src\\test\\resources\\img1.jpg"
   },
   {
@@ -33,6 +35,7 @@
     "email": "2email@gmail.com",
     "email2": "2email2@gmail.com",
     "email3": "2email3@gmail.com",
+    "company": "company 2",
     "photo": "src\\test\\resources\\img2.jpg"
   }
 ]

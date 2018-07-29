@@ -51,6 +51,9 @@ public class ContactData {
   @Column(name = "email3")
   @Type(type = "text")
   private String email3;
+  @Expose
+  @Column(name = "company")
+  private String company;
   @XStreamOmitField
   @Transient
   private String group;
@@ -121,6 +124,10 @@ public class ContactData {
     return email3;
   }
 
+  public String getCompany() {
+    return company;
+  }
+
   public String getGroup() {
     return group;
   }
@@ -184,6 +191,11 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
   public ContactData withGroup(String group) {
     this.group = group;
     return this;
@@ -195,13 +207,7 @@ public class ContactData {
             "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", home='" + home + '\'' +
-            ", mobile='" + mobile + '\'' +
-            ", work='" + work + '\'' +
-            ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
+            ", company='" + company + '\'' +
             '}';
   }
 
@@ -213,17 +219,12 @@ public class ContactData {
     return id == that.id &&
             Objects.equals(firstname, that.firstname) &&
             Objects.equals(lastname, that.lastname) &&
-            Objects.equals(address, that.address) &&
-            Objects.equals(home, that.home) &&
-            Objects.equals(mobile, that.mobile) &&
-            Objects.equals(work, that.work) &&
-            Objects.equals(email, that.email) &&
-            Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3);
+            Objects.equals(company, that.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstname, lastname, address, home, mobile, work, email, email2, email3);
+
+    return Objects.hash(id, firstname, lastname, company);
   }
 }

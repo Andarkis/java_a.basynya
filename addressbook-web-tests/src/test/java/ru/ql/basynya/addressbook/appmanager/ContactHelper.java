@@ -35,6 +35,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+    type(By.name("company"), contactData.getCompany());
     if (contactData.getPhoto() != null) {
       attach(By.name("photo"), contactData.getPhoto());
     }

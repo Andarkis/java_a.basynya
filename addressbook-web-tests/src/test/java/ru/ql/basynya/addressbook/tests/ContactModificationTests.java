@@ -45,7 +45,8 @@ public class ContactModificationTests extends TestBase {
             .withWork("+0(918)123-54-21")
             .withEmail("Modemail1@example.com")
             .withEmail2("Modemail2@example.com")
-            .withEmail3("Modemail2@example.com");
+            .withEmail3("Modemail3@example.com")
+            .withCompany("Mod Company");
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();

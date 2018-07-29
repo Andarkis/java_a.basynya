@@ -84,6 +84,7 @@ public class ContactDataGenerator {
               .withEmail2(String.format("%semail2@gmail.com",i))
               .withEmail3(String.format("%semail3@gmail.com",i))
               .withEmail3(String.format("%semail3@gmail.com",i))
+              .withCompany(String.format("company %s",i))
               .withPhoto(new File(String.format("src/test/resources/img%s.jpg",i % 3))));
     }
     return contacts;

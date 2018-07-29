@@ -9,6 +9,7 @@
     <email>0email@gmail.com</email>
     <email2>0email2@gmail.com</email2>
     <email3>0email3@gmail.com</email3>
+    <company>company 0</company>
     <photo>src\test\resources\img0.jpg</photo>
   </contact>
   <contact>
@@ -21,6 +22,7 @@
     <email>1email@gmail.com</email>
     <email2>1email2@gmail.com</email2>
     <email3>1email3@gmail.com</email3>
+    <company>company 1</company>
     <photo>src\test\resources\img1.jpg</photo>
   </contact>
   <contact>
@@ -33,6 +35,7 @@
     <email>2email@gmail.com</email>
     <email2>2email2@gmail.com</email2>
     <email3>2email3@gmail.com</email3>
+    <company>company 2</company>
     <photo>src\test\resources\img2.jpg</photo>
   </contact>
 </list>
