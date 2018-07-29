@@ -26,7 +26,6 @@ public class ContactModificationTests extends TestBase {
               .withEmail("email1@example.com")
               .withEmail2("email2@example.com")
               .withEmail3("email2@example.com")
-              .withGroup("[none]")
               .withPhoto(new File(String.format("src/test/resources/img1.jpg"))));
     }
   }
