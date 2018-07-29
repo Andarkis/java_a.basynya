@@ -32,7 +32,6 @@ public class ContactCreationTests extends TestBase {
       }
       XStream xStream = new XStream();
       xStream.processAnnotations(ContactData.class);
-      xStream.fromXML(xml);
       List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
       return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
@@ -54,7 +53,7 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
-  @Test(dataProvider = "validContactsFromXml")
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
     app.goTo().homePage();
     Contacts before = app.contact().all();

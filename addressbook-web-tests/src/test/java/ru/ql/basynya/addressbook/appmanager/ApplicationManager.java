@@ -22,6 +22,7 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
+  private DbHelper dbHelper;
   private String browser;
 
   public ApplicationManager(String browser) {
@@ -33,13 +34,20 @@ public class ApplicationManager {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
-    if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-    } else if (browser.equals(BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)) {
-      wd = new InternetExplorerDriver();
+    dbHelper = new DbHelper();
+
+    switch (browser) {
+      case BrowserType.FIREFOX:
+        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+        break;
+      case BrowserType.CHROME:
+        wd = new ChromeDriver();
+        break;
+      case BrowserType.IE:
+        wd = new InternetExplorerDriver();
+        break;
     }
+
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
     groupHelper = new GroupHelper(wd);
@@ -63,5 +71,9 @@ public class ApplicationManager {
 
   public NavigationHelper goTo() {
     return navigationHelper;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
   }
 }

@@ -1,17 +1,17 @@
 [
   {
     "name": "test 0",
-    "header": "header\n 0",
-    "footer": "footer\n 0"
+    "header": "header-first-line\r\nheader-second-line0",
+    "footer": "footer-first-line\r\nheader-second-line0"
   },
   {
     "name": "test 1",
-    "header": "header\n 1",
-    "footer": "footer\n 1"
+    "header": "header-first-line\r\nheader-second-line1",
+    "footer": "footer-first-line\r\nheader-second-line1"
   },
   {
     "name": "test 2",
-    "header": "header\n 2",
-    "footer": "footer\n 2"
+    "header": "header-first-line\r\nheader-second-line2",
+    "footer": "footer-first-line\r\nheader-second-line2"
   }
 ]

@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
+import org.testng.Assert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,7 +74,9 @@ public class GroupData {
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
     return id == groupData.id &&
-            Objects.equals(name, groupData.name);
+            Objects.equals(name, groupData.name) &&
+            Objects.equals(header, groupData.header) &&
+            Objects.equals(footer, groupData.footer);
   }
 
   @Override
@@ -87,6 +90,8 @@ public class GroupData {
     return "GroupData{" +
             "id=" + id +
             ", name='" + name + '\'' +
+            ", header='" + header + '\'' +
+            ", footer='" + footer + '\'' +
             '}';
   }
 }
