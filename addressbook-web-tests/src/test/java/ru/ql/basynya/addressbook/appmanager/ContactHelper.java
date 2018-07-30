@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.ql.basynya.addressbook.model.ContactData;
 import ru.ql.basynya.addressbook.model.Contacts;
+import ru.ql.basynya.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class ContactHelper extends BaseHelper {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  private void selectContactById(int id) {
+  public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
@@ -148,5 +149,43 @@ public class ContactHelper extends BaseHelper {
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
             .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3)
             .withHome(home).withMobile(mobile).withWork(work);
+  }
+
+  public void showAllContacts() {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+  }
+
+  public void selectGroupToAddByName(String groupName) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groupName);
+  }
+
+  public void submitContactAdding() {
+    wd.findElement(By.name("add")).click();
+  }
+
+  public void returnToHomePageWithFilter(String groupName) {
+    click(By.linkText("group page \"" + groupName + "\""));
+  }
+
+  public void addContactToGroup(ContactData contact, GroupData group) {
+    showAllContacts();
+    selectContactById(contact.getId());
+    selectGroupToAddByName(group.getName());
+    submitContactAdding();
+    returnToHomePageWithFilter(group.getName());
+  }
+  private void submitContactRemoving() {
+    wd.findElement(By.name("remove")).click();
+  }
+
+  private void showContactsFromGroupByName(String groupName) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(groupName);
+  }
+
+  public void removeContactFromGroup(ContactData contact, GroupData group) {
+    showContactsFromGroupByName(group.getName());
+    selectContactById(contact.getId());
+    submitContactRemoving();
+    returnToHomePageWithFilter(group.getName());
   }
 }

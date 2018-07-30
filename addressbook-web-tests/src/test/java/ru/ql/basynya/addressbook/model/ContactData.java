@@ -7,7 +7,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
-import java.security.acl.Group;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -70,6 +69,10 @@ public class ContactData {
   @ManyToMany (fetch = FetchType.EAGER)
   @JoinTable (name = "address_in_groups", joinColumns = @JoinColumn (name = "id"), inverseJoinColumns = @JoinColumn (name = "group_id"))
   private Set<GroupData> groups = new HashSet<GroupData>();
+
+  public Groups getGroups(){
+    return new Groups(groups);
+  }
 
   public String getAllPhones() {
     return allPhones;
@@ -195,10 +198,6 @@ public class ContactData {
   public ContactData withCompany(String company) {
     this.company = company;
     return this;
-  }
-
-  public Groups getGroups(){
-    return new Groups(groups);
   }
 
   @Override

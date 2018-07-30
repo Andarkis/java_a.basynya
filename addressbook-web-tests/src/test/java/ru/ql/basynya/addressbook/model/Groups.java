@@ -39,4 +39,14 @@ public class Groups extends ForwardingSet<GroupData> {
     groups.remove(group);
     return groups;
   }
+
+  public GroupData getGroupThatDoesNotContain(ContactData contact) {
+    GroupData result = null;
+        for (GroupData group : this) {
+          if (!contact.getGroups().contains(group)) {
+            result = group;
+          }
+        }
+        return result;
+  }
 }

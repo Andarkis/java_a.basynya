@@ -39,4 +39,44 @@ public class Contacts extends ForwardingSet<ContactData> {
     contacts.remove(contact);
     return contacts;
   }
+
+  public boolean hasContactThatIsNotInAll(Groups groups) {
+    Boolean result = false;
+    for (ContactData contact : this) {
+      if (contact.getGroups().size() < groups.size()) result = true;
+    }
+    return result;
+  }
+
+  public ContactData getContactThatIsNotInAll(Groups groups) {
+    ContactData result = null;
+    for (ContactData contact : this) {
+      if (contact.getGroups().size() < groups.size()) result = contact;
+    }
+    return result;
+  }
+
+  public ContactData getContactById(int id) {
+    ContactData result = null;
+    for (ContactData contact : this) {
+      if (contact.getId() == id) result = contact;
+    }
+    return result;
+  }
+
+  public boolean hasContactWithAnyGroup() {
+    Boolean result = false;
+    for (ContactData contact : this) {
+      if (contact.getGroups().size() > 0) result = true;
+    }
+    return result;
+  }
+
+  public ContactData getContactWithAnyGroup() {
+    ContactData result = null;
+    for (ContactData contact : this) {
+      if (contact.getGroups().size() > 0) result = contact;
+    }
+    return result;
+  }
 }
