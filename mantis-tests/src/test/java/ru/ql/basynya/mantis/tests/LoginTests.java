@@ -1,6 +1,5 @@
 package ru.ql.basynya.mantis.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.ql.basynya.mantis.appmanager.HttpSession;
 
