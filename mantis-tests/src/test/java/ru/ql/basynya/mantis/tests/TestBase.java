@@ -21,9 +21,9 @@ public class TestBase {
     app.ftp().upload(new File("src/test/resources/config_inc.php"), target, backup);
   }
 
-  @AfterSuite (alwaysRun = true)
+  @AfterSuite(alwaysRun = true)
   public void tearDown() throws IOException {
     app.stop();
-    app.ftp().restore(backup,target);
+    app.ftp().restore(backup, target);
   }
 }
