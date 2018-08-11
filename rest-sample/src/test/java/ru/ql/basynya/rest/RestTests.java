@@ -13,9 +13,8 @@ import java.io.IOException;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
-public class RestTests extends TestBase{
+public class RestTests extends TestBase {
 
   @Test
   public void testCreateIssue() throws IOException {
