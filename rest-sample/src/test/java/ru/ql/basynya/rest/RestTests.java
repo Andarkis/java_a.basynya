@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
-public class RestTests {
+public class RestTests extends TestBase{
 
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed(100);
     Set<Issue> oldIssues = getIssues();
-    System.out.println(oldIssues);
-
     Issue newIssue = new Issue().withSubject("Test issue A").withDescription("Random Text");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
