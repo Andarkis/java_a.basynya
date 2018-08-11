@@ -28,11 +28,8 @@ public class PasswordChangeTests extends TestBase {
   @DataProvider
   public static Iterator<Object[]> data() {
     String adminLogin = app.getProperty("web.adminLogin");
-    ;
     String adminPassword = app.getProperty("web.adminPassword");
-    ;
     String newUserPassword = app.getProperty("web.newUserPassword");
-    ;
     UserData user = app.db().nonAdminUsers().iterator().next();
 
     List<Object[]> data = new ArrayList<>();

@@ -26,6 +26,7 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private ManageUserHelper manageUserHelper;
   private DbHelper dbHelper;
+  private SoapHelper soapHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -87,7 +88,7 @@ public class ApplicationManager {
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
     }
-    return wd;
+    return wd;  
   }
 
   public MailHelper mail() {
@@ -120,5 +121,12 @@ public class ApplicationManager {
 
   public DbHelper db() {
     return new DbHelper(this);
+  }
+
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 }
